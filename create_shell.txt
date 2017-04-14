@@ -1,0 +1,48 @@
+Source: https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
+Author: Unicsman
+Date:  14/apr/17 0310pm
+
+
+1>
+
+#!/bin/bash
+input="/path/to/txt/file"
+while IFS= read -r var
+do
+  echo "$var"
+done < "$input"
+
+2>
+
+#!/bin/ksh
+file="/home/vivek/data.txt"
+while IFS= read line
+do
+        # display $line or do somthing with $line
+	echo "$line"
+done <"$file"
+
+3>
+
+#!/bin/bash
+file="/home/vivek/data.txt"
+while IFS= read -r line
+do
+        # display $line or do somthing with $line
+	printf '%s\n' "$line"
+done <"$file"
+
+4>
+
+#!/bin/bash
+file="/etc/passwd"
+while IFS=: read -r f1 f2 f3 f4 f5 f6 f7
+do
+        # display fields using f1, f2,..,f7
+        printf 'Username: %s, Shell: %s, Home Dir: %s\n' "$f1" "$f7" "$f6"
+done <"$file"
+
+
+
+learn more:  find@   https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
+
